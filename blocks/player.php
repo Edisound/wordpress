@@ -12,17 +12,17 @@
  *
  * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
-function player_block_init() {
+function etup_player_block_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
+
 	$dir = dirname( __FILE__);
-	//$dir = dirname( __DIR__).'/blocks/';
 
 	$index_js = 'player/index.js';
 	wp_register_script(
-		'player-block-editor',
+		'edisound-player-block-editor',
 		plugins_url( $index_js, __FILE__ ),
 		[
 			'wp-blocks',
@@ -30,49 +30,29 @@ function player_block_init() {
 			'wp-element',
 			'wp-editor'
 		],
-		filemtime( "{$dir}/{$index_js}" )
-	);
-
-	$editor_css = 'player/editor.css';
-	wp_register_style(
-		'player-block-editor',
-		plugins_url( $editor_css, __FILE__ ),
-		[],
-		filemtime( "{$dir}/{$editor_css}" )
-	);
-
-	$style_css = 'player/style.css';
-	wp_register_style(
-		'player-block',
-		plugins_url( $style_css, __FILE__ ),
-		[],
-		filemtime( "{$dir}/{$style_css}" )
+		filemtime( "$dir/player/index.js" )
 	);
 
 	register_block_type( 'edisound/player', [
 		//'api_version'   => 2,
-		'editor_script' => 'player-block-editor',
-		'editor_style'  => 'player-block-editor',
-		'style'         => 'player-block',
+		'editor_script' => 'edisound-player-block-editor',
 		'attributes'    => [
 			'title'     => ['type' => 'string'],
 			'content'   => ['type' => 'string', 'selector' => '.content', 'html' => false]
 		],
-		'render_callback'   => 'edisound_player_block_render'
+		'render_callback'   => 'etup_block_render'
 	] );
 }
 
-function edisound_player_block_render(array $attributes)
+function etup_block_render(array $attributes)
 {
 	if (isset($attributes['content'])) {
 		$pId = trim($attributes['content']);
 
-        add_action('wp_footer', 'edisound_init_js');
+		wp_enqueue_script('edisound-player-init', ETUP_INIT_JS_URL, array(), null, true);
 
-		return <<<HTML
-			<div class="rwm-podcast-player" data-pid="{$pId}"></div>
-HTML;
+		return '<div class="rwm-podcast-player" data-pid="'.esc_attr($pId).'"></div>';
 	}
 }
 
-add_action( 'init', 'player_block_init' );
+add_action( 'init', 'etup_player_block_init' );

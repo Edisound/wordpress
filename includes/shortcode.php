@@ -1,10 +1,7 @@
 <?php
 
-define( 'MSB_PLUGIN_FILE', dirname(__FILE__) );
-define( 'MSB_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-
 add_shortcode('edisound_player', function($atts) {
-	add_action('wp_footer', 'edisound_init_js');
+	wp_enqueue_script('edisound-player-init', ETUP_INIT_JS_URL, array(), null, true);
 
 	extract(shortcode_atts(
 		array(
@@ -18,7 +15,8 @@ add_shortcode('edisound_player', function($atts) {
 	return $tag;
 });
 
-function tiny_mce_register_buttons( $buttons ) {
+function etup_tiny_mce_register_buttons( $buttons ): array
+{
 	$newBtns = array(
 		'edisound_button'
 	);
@@ -26,14 +24,14 @@ function tiny_mce_register_buttons( $buttons ) {
 	return array_merge( $buttons, $newBtns );
 }
 
-function tiny_mce_add_buttons( $plugin_array ) {
-	$plugin_array['edisound_button'] = plugin_dir_url( MSB_PLUGIN_FILE ) . 'assets/js/embed_button.js';
+function etup_tiny_mce_add_buttons( $plugin_array ) {
+	$plugin_array['edisound_button'] = plugin_dir_url(dirname(__FILE__)) . 'assets/js/embed_button.js';
 	return $plugin_array;
 }
 
-add_action( 'init', 'tiny_mce_new_buttons' );
-
-function tiny_mce_new_buttons() {
-	add_filter( 'mce_external_plugins', 'tiny_mce_add_buttons' );
-	add_filter( 'mce_buttons', 'tiny_mce_register_buttons' );
+function etup_tiny_mce_new_buttons() {
+	add_filter( 'mce_external_plugins', 'etup_tiny_mce_add_buttons' );
+	add_filter( 'mce_buttons', 'etup_tiny_mce_register_buttons' );
 }
+
+add_action( 'init', 'etup_tiny_mce_new_buttons' );

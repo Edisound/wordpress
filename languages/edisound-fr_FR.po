@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Edisound\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-03 13:39+0000\n"
-"PO-Revision-Date: 2022-04-03 13:41+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2022-04-17 14:35+0000\n"
+"Last-Translator: ernadoo <ernadoo@gmail.com>\n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.1; wp-5.1.13\n"
+"X-Loco-Version: 2.2.2; wp-5.1.13\n"
 "X-Domain: edisound"
 
 #. Name of the plugin
@@ -42,7 +42,7 @@ msgstr "Chargement..."
 
 #: includes/widget.php:45
 msgid "Player code:"
-msgstr "Code du player"
+msgstr "Code du player :"
 
 #. Description of the plugin
 #: includes/widget.php:12
