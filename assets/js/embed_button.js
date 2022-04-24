@@ -6,7 +6,7 @@ jQuery(function ($) {
                 longname: 'Add Edisoud player ShortCode',
                 author: 'Erwan Nader',
                 authorurl: 'https://www.edisound.com',
-                version: "0.1.0"
+                version: "0.1.1"
             };
         },
         init: function (ed, url) {

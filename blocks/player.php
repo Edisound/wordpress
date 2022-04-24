@@ -44,15 +44,17 @@ function etup_player_block_init() {
 	] );
 }
 
-function etup_block_render(array $attributes)
+function etup_block_render(array $attributes): string
 {
-	if (isset($attributes['content'])) {
+	if (isset($attributes['content']) && !empty($attributes['content'])) {
 		$pId = trim($attributes['content']);
 
 		wp_enqueue_script('edisound-player-init', ETUP_INIT_JS_URL, array(), null, true);
 
 		return '<div class="rwm-podcast-player" data-pid="'.esc_attr($pId).'"></div>';
 	}
+
+	return '';
 }
 
 add_action( 'init', 'etup_player_block_init' );
