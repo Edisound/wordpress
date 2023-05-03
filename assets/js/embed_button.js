@@ -1,5 +1,4 @@
-jQuery(function ($) {
-
+(function(){
     tinymce.create('tinymce.plugins.edisound_embed_plugin', {
         getInfo: function() {
             return {
@@ -20,7 +19,7 @@ jQuery(function ($) {
 
             ed.addCommand('edisound_insert_shortcode', function () {
 
-                const selected = tinyMCE.activeEditor.selection.getContent();
+                const selected = ed.selection.getContent();
                 let content;
 
                 // if text is selected use that as the video source
@@ -52,5 +51,4 @@ jQuery(function ($) {
 
     // Add button
     tinymce.PluginManager.add('edisound_button', tinymce.plugins.edisound_embed_plugin);
-
-});
+})();

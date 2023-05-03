@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "edisound/player",
+	"title": "edisound Player",
+	"version": "0.1.1",
+	"category": "embed",
+	"description": "Add Gutenberg block for easly integrate the Edisound podcast player",
+	"textdomain": "edisound",
+	"supports": {
+		"multiple": false,
+		"className": true,
+		"html": false,
+		"reusable": false
+	},
+	"attributes": {
+		"content": {
+			"type": "string",
+			"selector": ".content",
+			"html": false
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}
