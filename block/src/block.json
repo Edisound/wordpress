@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "edisound/player",
 	"title": "edisound Player",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"category": "embed",
 	"description": "Add Gutenberg block for easly integrate the Edisound podcast player",
 	"textdomain": "edisound",

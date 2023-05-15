@@ -19,21 +19,21 @@ add_shortcode('edisound_player', function($atts) {
 	return $tag;
 });
 
-function tiny_mce_register_buttons( $buttons ): array
+function tiny_mce_register_edisound_player_buttons( $buttons ): array
 {
     $buttons[] = 'edisound_button';
 
 	return $buttons;
 }
 
-function tiny_mce_add_buttons( $plugin_array ) {
+function tiny_mce_add_edisound_player_buttons( $plugin_array ) {
 	$plugin_array['edisound_button'] = plugin_dir_url(dirname(__FILE__)) . 'assets/js/embed_button.js';
 	return $plugin_array;
 }
 
-function tiny_mce_new_buttons() {
-	add_filter( 'mce_external_plugins', __NAMESPACE__.'\tiny_mce_add_buttons' );
-	add_filter( 'mce_buttons', __NAMESPACE__.'\tiny_mce_register_buttons' );
+function tiny_mce_new_edisound_player_buttons() {
+	add_filter( 'mce_external_plugins', __NAMESPACE__.'\tiny_mce_add_edisound_player_buttons' );
+	add_filter( 'mce_buttons', __NAMESPACE__.'\tiny_mce_register_edisound_player_buttons' );
 }
 
-add_action( 'init', __NAMESPACE__.'\tiny_mce_new_buttons' );
+add_action( 'init', __NAMESPACE__.'\tiny_mce_new_edisound_player_buttons' );
